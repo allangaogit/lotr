@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 /* Custom properties */
-:root{
+
+/*root is like global scoping variables for css*/
+:root{ 
     --light-color: #fff;
     --light-color-alt: #afb6cd;
     --primary-background-color: #131417;
@@ -26,19 +28,241 @@
     --item-min-height-md: 30rem;
 }
 /* Base styles */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    /* font-size:10px; It's the same as 62.5% but percentages work better
+    with zoom in and out on the browser*/
+    font-size: 62.5%
+}
+
+body{ /*apply custom propert (from root) by using var(name_of_variable_in_root)*/
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--light-color-alt);
+    background-color: var(--primary-background-color);
+    letter-spacing: 1px;
+    transition: background-color .25s, color .25s;
+}
+
+a{
+    text-decoration: none;
+    color:inherit;
+}
+
+img{
+    max-width: 100%; /*so images don't overflow their container*/
+    display: block;
+}
+
+ul{
+    list-style-type: none;
+}
+
+input,
+button{
+    font:inherit;
+    color:inherit;
+    border:none;
+    background-color: transparent;
+    outline:none;
+}
+
+i{
+    font-size: var(--font-size-md);
+}
 
 /* Theme color change */
 
+body.light-theme{
+    --light-color: #3d3d3d;
+    --light-color-alt: #rgba(0,0,0,.6);
+    --primary-background-color: #fff;
+    --secondary-background-color: #f1f1f1;
+    --hover-light-color: #fff;
+    --transparent-light-color: #252830;
+    --transparent-dark-color: rgba(0,0,0,0.1);
+}
+
 /* Reusable classes */
+.container{
+    max-width: 160rem; /*limit container to this wide*/
+    margin: 0 auto; /*center in middle*/
+    padding: 0 1.5rem;
+}
 
+.place-items-center{
+    display:inline-flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.screen{
+    display:none;
+}
 /* Header */
+.header{
+    background-color: var(--secondary-background-color);
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%; /*once you position fixed an element, it loses it's width, need to define width again */
+    z-index:999;
+}
 
+.navbar{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1.5rem;
+}
+
+.logo{
+    font-size: var(--font-size-md);
+    color: var(--light-color)
+}
+
+.menu{
+    position:absolute;
+    top:8.5rem;
+    right:1.5rem;
+    width:23rem;
+    padding:1.5rem;
+    background-color: var(--secondary-background-color);
+    /*hide element from view*/
+    opacity: 0; 
+    /*stop menu from being clickable when hidden*/
+    transform: scale(0); 
+    transition: opacity .25s ease-in;
+}
+
+.list{
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+}
+
+.menu > .list{
+    flex-direction: column;
+}
+
+.list-link.current{
+    color: var(--light-color)
+}
+
+.close-menu-icon{
+    display: none;
+}
+
+.btn{
+    cursor: pointer; /*so when hover over buttons, get appearnce they are clickable*/
+}
+
+.list-link:hover,
+.btn:hover,
+.btn:hover span{
+    color:var(--light-color)
+}
+
+.moon-icon{
+    display: none;
+}
+
+.light-theme .sun-icon{
+    display:none;
+}
+
+.light-theme .moon-icon{
+    display:block;
+}
 /* Header JavaScript Styles */
+.header.activated{
+    box-shadow: 0 1px .5rem var(--transparent-light-color);
+}
 
+.menu.activated{
+    box-shadow: 1px 1px 1rem var(--transparent-light-color);
+    opacity: 1  ;
+    transform: scale(1); 
+}
+
+.menu-toggle-icon.activated .open-menu-icon{
+    display:none;
+}
+
+.menu-toggle-icon.activated .close-menu-icon{
+    display:block;
+}
 /* Search */
+.search-form-container{
+    width:100%;
+    max-width:100%;
+    height:100vh;
+    background-color: var(--primary-background-color);
+    position:fixed;
+    top: 0;
+    left:0;
+    z-index: 9999;
+    display:flex;
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity .5s;
+}
 
+.form-container-inner{
+    margin: auto;
+    display:flex;
+    flex-direction: column;
+    gap: var(--gap);
+    text-align: center;
+}
+
+.form{
+    display:flex;
+    justify-content: center;
+}
+
+.form-input,
+.form-btn{
+    display: inline-block;
+    border:2px solid var(--secondary-background-color);
+    padding: 1.5rem;
+}
+
+.form-input{
+    border-right:none;
+    width:100%;
+}
+
+.form-btn{
+    margin-left: -0.5rem;
+    border-left:none;
+    background-color: var(--secondary-background-color);
+    width:8rem;
+}
+
+.form-note{
+    font-size: var(--font-size-xsm);
+    align-self: flex-end;
+}
+
+.form-close-btn{
+    position:absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    border: 2px solid var(--secondary-background-color);
+    width: 4rem;
+    height: 4rem;
+}
 /* Form JavaScript styles */
-
+.search-form-container.activated{
+    opacity:1;
+    transform: scale(1);
+}
 /* Featured articles */
 
 /* Featured articles - Sidebar */
