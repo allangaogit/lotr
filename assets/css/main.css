@@ -1,5 +1,14 @@
 /* Import font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@font-face {
+    font-family: ringbearer;
+    src: url(../../fonts/Ringbearer.ttf);
+}
+
+@font-face {
+    font-family: hobbiton;
+    src: url(../../fonts/HobbitonBrushhandhobbitonBrush-WygA.ttf);
+}
 
 /* Custom properties */
 :root{
@@ -7,10 +16,10 @@
     --light-color-alt: #afb6cd;
     --primary-background-color: #131417;
     --secondary-background-color: #252830;
-    --hover-light-color: var(--light-color);
+    --hover-light-color: #FFD700;
     --hover-dark-color: var(--primary-background-color);
     --gradient-color: linear-gradient(
-        115deg,#4fcf70,#fad648,#a767e5,#12bcfe,#44ce7b);
+        115deg,#010332,#FFD700,#29011C,#FFD700,#530005);
     --transparent-light-color: rgba(255,255,255,.05);
     --transparent-dark-color: rgba(0,0,0,.75);
     --font-family: 'Poppins', sans-serif;
@@ -76,7 +85,7 @@ body.light-theme{
     --light-color-alt: rgba(0,0,0,.6);
     --primary-background-color: #fff;
     --secondary-background-color: #f1f1f1;
-    --hover-light-color: #fff;
+    --hover-light-color: #FFD700;
     --transparent-dark-color: var(--secondary-background-color);
     --transparent-light-color: rgba(0,0,0,.1);
 }
@@ -122,9 +131,33 @@ body.light-theme{
 }
 
 .logo{
-    font-size: var(--font-size-md);
-    color: var(--light-color);
-}
+    font-size: var(--font-size-lg);
+    color: #FFD700;
+    font-family: Ringbearer;
+    text-shadow: 1px 1px 0 #000,
+    -1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000,
+    0px 1px 0 #000,
+    0px -1px 0 #000,
+    -1px 0px 0 #000,
+    1px 0px 0 #000,
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    0px 2px 0 #000,
+    0px -2px 0 #000,
+    -2px 0px 0 #000,
+    2px 0px 0 #000,
+    1px 2px 0 #000,
+    -1px 2px 0 #000,
+    1px -2px 0 #000,
+    -1px -2px 0 #000,
+    2px 1px 0 #000,
+    -2px 1px 0 #000,
+    2px -1px 0 #000,
+    -2px -1px 0 #000;}
 
 .menu{
     position: absolute;
@@ -163,7 +196,7 @@ body.light-theme{
 .list-link:hover,
 .btn:hover,
 .btn:hover span{
-    color: var(--light-color);
+    color: #FFD700;
 }
 
 .moon-icon{
@@ -452,7 +485,7 @@ body.light-theme{
 }
 
 .trending-news-box:hover .article-title{
-    color: var(--light-color-alt);
+    color: #FFD700;
 }
 
 /* Quick read */
@@ -603,11 +636,13 @@ body.light-theme{
     display: flex;
     flex-direction: column;
     order: 1;
+    align-items:center;
 }
 
 .company-description{
     margin-block: var(--margin-sm);
     max-width: 75%;
+    text-align:center;
 }
 
 .social-media{
@@ -755,8 +790,7 @@ body.light-theme{
         align-items: center;
     }
 
-    .popular-tags-container,
-    .footer-container{
+    .popular-tags-container{
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -783,7 +817,7 @@ body.light-theme{
     
     .featured-article{
         grid-column: 3/-1;
-        grid-row: 2/4;
+        grid-row: 1/4;
     }
 
     .featured-article-1{
@@ -864,7 +898,7 @@ body.light-theme{
     }
 
     .company-data{
-        grid-column: span 2;
+        grid-column: span 5;
     }
 
     .company-description{
@@ -892,7 +926,7 @@ body.light-theme{
     
     .featured-article-1{
         grid-column: 1/3;
-        grid-row: 2/-1;
+        grid-row: 1/-1;
     }
 
 }
